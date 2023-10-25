@@ -9,120 +9,22 @@ type Currency = {
 };
 
 type CurrenciesProps = {
-  currencies: {
-    description: string;
-    code: string;
-    rate: number;
-  }[];
+  currencies: Currency[];
 };
 
 // 2ème étape : Déclarer les props dans le composant
 function Currencies({ currencies }: CurrenciesProps) {
-  console.log(currencies);
   return (
     <div className="currencies">
       <div className="currencies__title">Currencies</div>
       <ul className="currencies__list">
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            USD
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            GBP
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            MXN
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            EUR
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            USD
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            GBP
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            MXN
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            EUR
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            USD
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            GBP
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            MXN
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            EUR
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            USD
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            GBP
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            MXN
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            EUR
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            USD
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            GBP
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            MXN
-          </button>
-        </li>
-        <li className="currencies__item">
-          <button type="button" className="currencies__item-btn">
-            EUR
-          </button>
-        </li>
+        {currencies.map((currency) => (
+          <li className="currencies__item" key={currency.code}>
+            <button type="button" className="currencies__item-btn">
+              {currency.description}
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
