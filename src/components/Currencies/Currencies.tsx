@@ -26,6 +26,14 @@ function Currencies({ currencies }: CurrenciesProps) {
     setSearchText(newValue);
   }
 
+  // A partir de la variable searchText, je vais filter la liste des currencies
+  const currenciesFiltered = currencies.filter((currency) => {
+    // Je récupère le searchText que je met en miniscule
+    const searchTextLowerCased = searchText.toLowerCase();
+
+    return currency.description.toLowerCase().includes(searchTextLowerCased);
+  });
+
   return (
     <div className="currencies">
       <div className="currencies__title">
@@ -38,16 +46,23 @@ function Currencies({ currencies }: CurrenciesProps) {
           // onChange={(event) => setSearchText(event.target.value)}
           onChange={handleChangeSearchTextInput}
         />
-        {searchText}
       </div>
       <ul className="currencies__list">
-        {currencies.map((currency) => (
+        {/* Je parcours le tableau de devise filtrer par rapport au searchText */}
+        {currenciesFiltered.map((currency) => (
           <li className="currencies__item" key={currency.code}>
             <button type="button" className="currencies__item-btn">
               {currency.description}
             </button>
           </li>
         ))}
+        {currenciesFiltered.length === 0 && (
+          <li className="currencies__item">
+            <button type="button" className="currencies__item-btn" disabled>
+              Aucune devise correspondante
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );
