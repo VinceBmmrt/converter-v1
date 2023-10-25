@@ -1,3 +1,5 @@
+import './BaseAmount.scss';
+
 function BaseAmount() {
   return (
     <header className="base-amount">

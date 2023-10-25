@@ -1,3 +1,5 @@
+import './ResultConversion.scss';
+
 function ResultConversion() {
   return (
     <div className="result-conversion">
