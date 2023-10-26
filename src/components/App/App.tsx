@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BaseAmount from '../BaseAmount/BaseAmount';
 import Currencies from '../Currencies/Currencies';
 import ResultConversion from '../ResultConversion/ResultConversion';
@@ -21,6 +21,20 @@ function App() {
   // On peut définir le type de notre variable d'état sans passé de valeur initial
   // Il faut préciser le type entre `<>` après le useState et avatn les ()
   const [currency, setCurrency] = useState<Currency>(currenciesData[0]);
+
+  // Je modifie le titre de la page lorsque la devise change
+  // useEffect permet d'exécuter une action (fonction) lorsqu'une variable change
+  useEffect(() => {
+    console.log('La devise a changé, je change mon title');
+    document.title = `${currency.description} - React Currency Converter`;
+    // Lorsque mon composant est exécuter la première fois ET lorsque la variable currency change
+  }, [currency]);
+
+  useEffect(() => {
+    console.log('ma fonction sera exécuter uniquement lors du premier rendu');
+    // Je souhaite récupérer les données depuis une API lorsque mon composant est rendu
+    // En passant un tableau de dépandance vide, je m'assure que la fonction ne sera exécuter qu'une seule fois
+  }, []);
 
   return (
     <div className="app">
