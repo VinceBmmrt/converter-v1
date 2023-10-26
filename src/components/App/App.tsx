@@ -26,6 +26,7 @@ function App() {
     <div className="app">
       <BaseAmount />
       {/* Je fournis la liste des currencies récupérer depuis mon fichier data/currencies.js */}
+      {/* Je passe la fonction setCurrency qui sera exécuter ... au click sur la devise */}
       <Currencies currencies={currenciesData} onClickCurrency={setCurrency} />
       <ResultConversion
         value={currency.rate}
