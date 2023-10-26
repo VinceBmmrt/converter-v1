@@ -29,6 +29,11 @@ function Currencies({ currencies }: CurrenciesProps) {
     return currency.description.toLowerCase().includes(searchTextLowerCased);
   });
 
+  // Au click sur ma devise
+  const handleClickCurrency = (currencyClicked: Currency) => {
+    console.log('Click sur la currency', currencyClicked);
+  };
+
   return (
     <div className="currencies">
       <div className="currencies__title">
@@ -46,7 +51,14 @@ function Currencies({ currencies }: CurrenciesProps) {
         {/* Je parcours le tableau de devise filtrer par rapport au searchText */}
         {currenciesFiltered.map((currency) => (
           <li className="currencies__item" key={currency.code}>
-            <button type="button" className="currencies__item-btn">
+            <button
+              type="button"
+              className="currencies__item-btn"
+              // 1ère étape, détecter le click sur la devise
+              // J'exécuter une fonction qui elle exécutera la fonction handleClickCurrency
+              // Ce qui me permet de passé en paramétre la devise sur laquelle j'ai cliqué
+              onClick={() => handleClickCurrency(currency)}
+            >
               {currency.description}
             </button>
           </li>
