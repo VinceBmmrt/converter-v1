@@ -6,10 +6,13 @@ import { Currency } from '../../@types/currency';
 // 1ère étape : Créer le contrat de props
 type CurrenciesProps = {
   currencies: Currency[];
+  // Lorsque l'on clickera sur une devise, on le dira à notre composant parent
+  // Je passerai en paramètre la devise sur laquel on a cliqué
+  onClickCurrency: (currency: Currency) => void;
 };
 
 // 2ème étape : Déclarer les props dans le composant
-function Currencies({ currencies }: CurrenciesProps) {
+function Currencies({ currencies, onClickCurrency }: CurrenciesProps) {
   // Je créer une variable d'état que je vais chercher à lier à mon input
   const [searchText, setSearchText] = useState('');
 
@@ -32,6 +35,9 @@ function Currencies({ currencies }: CurrenciesProps) {
   // Au click sur ma devise
   const handleClickCurrency = (currencyClicked: Currency) => {
     console.log('Click sur la currency', currencyClicked);
+
+    // J'appel la fonction passé en props pour lui dire sur quelle devise on a cliqué
+    onClickCurrency(currencyClicked);
   };
 
   return (
