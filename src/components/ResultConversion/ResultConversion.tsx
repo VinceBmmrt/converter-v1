@@ -1,10 +1,15 @@
 import './ResultConversion.scss';
 
-function ResultConversion() {
+type ResultConversionProps = {
+  value: number;
+  currencyName: string;
+};
+
+function ResultConversion({ value, currencyName }: ResultConversionProps) {
   return (
     <div className="result-conversion">
-      <p className="result-conversion__value">1.95583</p>
-      <p className="result-conversion__currency">United State Dollar</p>
+      <p className="result-conversion__value">{value}</p>
+      <p className="result-conversion__currency">{currencyName}</p>
     </div>
   );
 }

@@ -1,14 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 import './Currencies.scss';
+import { Currency } from '../../@types/currency';
 
 // Passage de props
 // 1ère étape : Créer le contrat de props
-type Currency = {
-  description: string;
-  code: string;
-  rate: number;
-};
-
 type CurrenciesProps = {
   currencies: Currency[];
 };
